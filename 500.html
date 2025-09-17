@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>500 - Szerver hiba</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ffa726 0%, #ff9800 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            animation: slideIn 0.8s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        .emoji {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: shake 1s infinite;
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        
+        .error-code {
+            font-size: 140px;
+            color: #ffa726;
+            margin: 0;
+            font-weight: 900;
+            text-shadow: 0 5px 15px rgba(255, 167, 38, 0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .error-message {
+            font-size: 28px;
+            color: #2c3e50;
+            margin: 20px 0;
+            font-weight: 600;
+        }
+        
+        .error-description {
+            color: #555;
+            margin-bottom: 40px;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #4ecdc4, #45b7b8);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: 600;
+            box-shadow: 0 8px 25px rgba(78, 205, 196, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .back-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .back-link:hover::before {
+            left: 100%;
+        }
+        
+        .back-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(78, 205, 196, 0.4);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px;
+                margin: 10px;
+            }
+            
+            .error-code {
+                font-size: 100px;
+            }
+            
+            .error-message {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="emoji">⚡</div>
+        <h1 class="error-code">500</h1>
+        <h2 class="error-message">Szerver belső hibája</h2>
+        <p class="error-description">
+            Sajnáljuk, de a szerveren belső hiba történt. A technikai csapatunk 
+            értesítésre került és dolgozik a probléma megoldásán.
+        </p>
+        <a href="/" class="back-link">← Vissza a főoldalra</a>
+    </div>
+</body>
+</html>

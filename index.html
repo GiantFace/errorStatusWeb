@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hibás Oldalak Tesztelése</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 900px;
+            width: 100%;
+            animation: slideIn 0.8s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            font-weight: 700;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        
+        .error-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .error-link {
+            display: block;
+            padding: 20px;
+            color: white;
+            text-decoration: none;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: 600;
+            font-size: 1.1em;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .error-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .error-link:hover::before {
+            left: 100%;
+        }
+        
+        .error-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+        
+        .error-link.red { 
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+        }
+        .error-link.orange { 
+            background: linear-gradient(135deg, #ffa726, #ff9800);
+        }
+        .error-link.purple { 
+            background: linear-gradient(135deg, #ab47bc, #9c27b0);
+        }
+        .error-link.blue { 
+            background: linear-gradient(135deg, #4ecdc4, #45b7b8);
+        }
+        .error-link.green { 
+            background: linear-gradient(135deg, #66bb6a, #4caf50);
+        }
+        .error-link.pink { 
+            background: linear-gradient(135deg, #f48fb1, #e91e63);
+        }
+        
+        .description {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border-left: 5px solid #2196f3;
+            box-shadow: 0 5px 15px rgba(33, 150, 243, 0.1);
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .guide {
+            margin-top: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            animation: fadeIn 1s ease-out 0.6s both;
+        }
+        
+        .guide h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .guide ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .guide li {
+            padding: 8px 0;
+            color: #555;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .guide li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .error-links {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="floating">🚨 Hibás Oldalak Tesztelése</h1>
+        <p class="subtitle">Szerver alapú HTTP hibakód szimuláció</p>
+        
+        <div class="description">
+            <strong>Leírás:</strong> Ez az oldal különböző HTTP státuszkódú hibákat szimulál szerver oldalon. 
+            Kattints a linkekre, hogy megnézd a különböző hibás oldalakat és figyeld meg a böngésző fejlesztői eszközeiben a státuszkódokat.
+        </div>
+
+        <div class="error-links">
+            <a href="/404" class="error-link red">404 - Not Found</a>
+            <a href="/500" class="error-link orange">500 - Server Error</a>
+            <a href="/403" class="error-link purple">403 - Forbidden</a>
+            <a href="/401" class="error-link blue">401 - Unauthorized</a>
+            <a href="/503" class="error-link green">503 - Service Unavailable</a>
+            <a href="/timeout" class="error-link pink">Timeout Error</a>
+        </div>
+
+        <div class="guide">
+            <h3>📋 Tesztelési útmutató:</h3>
+            <ul>
+                <li><strong>404:</strong> Az oldal nem található - szerver válaszol 404 státuszkóddal</li>
+                <li><strong>500:</strong> Szerver belső hibája - szerver válaszol 500 státuszkóddal</li>
+                <li><strong>403:</strong> Hozzáférés megtagadva - szerver válaszol 403 státuszkóddal</li>
+                <li><strong>401:</strong> Nem hitelesített felhasználó - szerver válaszol 401 státuszkóddal</li>
+                <li><strong>503:</strong> Szolgáltatás nem elérhető - szerver válaszol 503 státuszkóddal</li>
+                <li><strong>Timeout:</strong> Időtúllépés - szerver 5 másodperc késéssel válaszol</li>
+            </ul>
+            <p style="margin-top: 15px; font-style: italic; color: #666;">
+                💡 Tipp: Nyissa meg a böngésző fejlesztői eszközeit (F12) és figyelje a Network fülön a HTTP státuszkódokat!
+            </p>
+        </div>
+    </div>
+</body>
+</html>
