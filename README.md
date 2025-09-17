@@ -4,6 +4,11 @@ Ez a projekt egy HTML oldalt tartalmaz, amely különböző HTTP státuszkódú 
 
 ## 🚀 Gyors indítás
 
+### 🌐 Éles verzió (GitHub Pages)
+A projekt automatikusan elérhető GitHub Pages-en:
+**👉 [https://giantface.github.io/errorStatusWeb](https://giantface.github.io/errorStatusWeb)**
+
+### 💻 Helyi fejlesztés
 1. **Függőségek telepítése:**
    ```bash
    npm install
