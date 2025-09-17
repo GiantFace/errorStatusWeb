@@ -4,9 +4,11 @@ Ez a projekt egy HTML oldalt tartalmaz, amely különböző HTTP státuszkódú 
 
 ## 🚀 Gyors indítás
 
-### 🌐 Éles verzió (GitHub Pages)
-A projekt automatikusan elérhető GitHub Pages-en:
-**👉 [https://giantface.github.io/errorStatusWeb](https://giantface.github.io/errorStatusWeb)**
+### 🌐 Éles verzió (Vercel)
+A projekt automatikusan elérhető Vercel-en:
+**👉 [https://error-status-web.vercel.app](https://error-status-web.vercel.app)**
+
+> **Fontos**: A Vercel valódi HTTP hibakódokat ad vissza, nem csak statikus HTML-t!
 
 ### 💻 Helyi fejlesztés
 1. **Függőségek telepítése:**
