@@ -1,0 +1,46 @@
+# Környezeti változók és biztonsági fájlok
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+config.env
+
+# Node.js függőségek
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Log fájlok
+logs
+*.log
+
+# Runtime adatok
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage könyvtár
+coverage/
+.nyc_output
+
+# IDE fájlok
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generált fájlok
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Build könyvtárak
+dist/
+build/
